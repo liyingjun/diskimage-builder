@@ -205,6 +205,9 @@ function install_grub2 {
     fi
 
     $GRUB_MKCONFIG
+    if [[ $DISTRO_NAME = "centos7" ]]; then
+        grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+    fi
 
     # Remove the fix to disable os_prober
     if [ -n "$PROBER_DISABLED" ]; then

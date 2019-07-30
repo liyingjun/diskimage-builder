@@ -15,6 +15,11 @@ $IPADIR/imagebuild/common/generate_upper_constraints.sh $IPADIR/upper-constraint
 # create the virtual environment
 virtualenv $IPADIR/venv
 
+tee /etc/pip.conf <<EOF
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+EOF
+
 # pip might be an older version which does not support the -c option, therefore upgrade first
 $IPADIR/venv/bin/pip install pip --upgrade
 
